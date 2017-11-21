@@ -1,89 +1,88 @@
 $( document ).ready(function() {
     
-    // game obj that holds all questions and answers
+    // game object that holds all questions and answers
         var game = {
             questions: [
             {
-                question: 'What is the capital of Vermont?',
-                possibles: ['Battleboro', 'Montpelier', 'Barre City', 'Burlington'],
+                question: "What is the regulation height for a basketball hoop?",
+                possibles: ["9 ft", "10 ft", "12 ft", "8 ft"],
                 id: 'question-one',
                 answer: 1
             }, {
-                question: 'What is the capital of Illinois?',
-                possibles: ['Springfield', 'Chicago', 'Rockford', 'Joliet', 'Evanston'],
+                question: "What city hosted the 2012 Summer Olympics?",
+                possibles: ["Paris", "Beijing", "Rio", "Tokyo", "London"],
                 id: 'question-two',
-                answer: 0
+                answer: 4
             }, {
-                question: 'What is the capital of California?',
-                possibles: ['San Francisco', 'Los Angeles', 'Mendocino', 'San Diego', 'Sacramento'],
+                question: "How many soccer players should be on the field at the same time?",
+                possibles: ["22", "20", "11", "16", "18"],
                 id: 'question-three',
-                answer: 4
-            }, {
-                question: 'What is the capital of Indiana?',
-                possibles: ['Fort Wayne', 'Indianapolis', 'Terre Haute', 'Bloomington', 'Indianapolis'],
-                id: 'question-four',
-                answer: 1
-            }, {
-                question: 'What is the capital of Alabama?',
-                possibles: ['Montgomery', 'Birmingham', 'Mobile', 'Tuscaloosa', 'Gulf Shores'],
-                id: 'question-five',
                 answer: 0
             }, {
-                question: 'What is the capital of Colorado?',
-                possibles: ['Boulder', 'Denver', 'Vale', 'Fort Collins', 'Grand Junction'],
-                id: 'question-six',
-                answer: 1
-    
-            }, {
-                question: 'What is the capital of Delaware?',
-                possibles: ['Wilmington', 'Newark', 'Dover', 'Lewes', 'Middletown'],
-                id: 'question-seven',
-                answer: 2
-            }, {
-                question: 'What is the capital of Florida?',
-                possibles: ['Miami', 'Tampa', 'Jacksonville', 'Daytona Beach', 'Talahassee'],
-                id: 'question-eight',
-                answer: 4
-            }, {
-                question: 'What is the capital of Idaho?',
-                possibles: ['Coeur dAlene', 'Idaho Falls', 'Boise', 'Meridian', 'Twin Falls'],
-                id: 'question-nine',
-                answer: 2
-            }, {
-                question: 'What is the capital of Michigan?',
-                possibles: ['Macinack Island', 'Lansing', 'Grand Rapids', 'Ann Arbor', 'Flint'],
-                id: 'question-ten',
-                answer: 1
-            }, {
-                question: 'What is the capital of Washington State?',
-                possibles: ['Seattle', 'Bellevue', 'Spokane', 'Olympia', 'Bellingham'],
-                id: 'question-eleven',
+                question: "What NFL Quarterback has been in the most Super Bowls?",
+                possibles: ["Joe Montana", "Brett Farve", "Ben Rothlisberger", "Tom Brady", "Troy Aikman"],
+                id: 'question-four',
                 answer: 3
             }, {
-                question: 'What is the best kind of coffee?',
-                possibles: ['Intelligentsia', 'Blue Bottle', 'Starbucks', 'Caribou', 'none of the above'],
-                id: 'question-twelve',
+                question: "The Heisman Trophy is presented in which sport?",
+                possibles: ["College Baseball", "MLB", "College Basketball", "College Football", "NFL"],
+                id: 'question-five',
+                answer: 3
+            }, {
+                question: "What position does Rob Gronkowski play?",
+                possibles: ["Wide Receiver", "Safety", "Tight End", "Offensive Line", "Running Back"],
+                id: 'question-six',
+                answer: 2
+    
+            }, {
+                question: "What is the highest number of games played in a World Series?",
+                possibles: ["3", "9", "5", "7", "4"],
+                id: 'question-seven',
+                answer: 3
+            }, {
+                question: "Lambeau Field is the home field of which National Football League team?",
+                possibles: ["Dolphins", "Packers", "Bears", "Eagles", "Patriots"],
+                id: 'question-eight',
+                answer: 1
+            }, {
+                question: "What is the most common type of pitch thrown by pitchers in baseball?",
+                possibles: ["Fastball", "Curveball", "Slider", "Knuckleball", "Screwball"],
+                id: 'question-nine',
+                answer: 0
+            }, {
+                question: "Which tennis player has won the most men's Grand Slam titles?",
+                possibles: ["Andre Agassi", "Pete Sampras", "Roger Federer", "Rafael Nadal", "Bjorn Borg"],
+                id: 'question-ten',
+                answer: 2
+            }, {
+                question: "Who is the only athlete ever to play in a Super Bowl and a World Series?",
+                possibles: ["Bo Jackson", "Barry Sanders", "DJ Dozier", "Jim Thorpe", "Deion Sanders"],
+                id: 'question-eleven',
                 answer: 4
+            }, {
+                question: "What is the real name of the former wrestler turned actor who went by the ring name 'The Rock'?",
+                possibles: ["Shawn Robinson", "Dwayne Johnson", "Deion Lewis", "Micheal Johnson", "none of the above"],
+                id: 'question-twelve',
+                answer: 1
             }
             ]}
     
         // test
-        var message = 'Game Over!';
+        var message = "You Finished!!";
         // var $message = $('#message');
         // test
     
     // This initializes the button that starts the game 
         $(".startGame").on("click", function (){
     // when the start button clicked, the div with the questions that was hidden is shown
-            $('.wrapper').show();
-            console.log('hello');
+            $(".wrapper").show();
     
             $(this).hide();
         });
     
-        // These events start the timer: set the number of seconds the guesser has 
-        var number = 30;
-        $('#timeLeft').on('click', run);
+        // Timer 
+        var number = 120;
+        $("#timeLeft").on("click", run);
     
         // This function enables the number of seconds to decrease with time, and to display
         // the result of that decrease until time is up. 
@@ -91,7 +90,7 @@ $( document ).ready(function() {
             // Decrease number by one.
             number--;
             // Show the number in the #timeLeft div.
-            $('#timeLeft').html('<h2>' + number + " seconds"+'</h2>');
+            $("#timeLeft").html("<h2>" + number + " seconds" + "</h2>");
             // When the number is equal to zero, 
             if (number === 0){
             // run the stop function.
@@ -99,20 +98,11 @@ $( document ).ready(function() {
             // Alert the user that time is up. Update the innerHTML of the message
            // div to say 'Game Over!'
             // alert('Time Up!')
-            $('#message').html('time up!');
+            $("#message").html("times up!");
             checkAnswers();
             }
         }
-        // test
-        // writes the win or lose message 
-            // function writeMessage (){
-            // 	// updates the contents of the message div
-            // 	$message.html(message);
-            // }
-        // test
     
-        // the run function sets the spacing of the decrement function's time interval so that
-        // it can be equal to a second per number decrement.
         function run(){
             counter = setInterval(decrement, 1000);
         }
@@ -125,22 +115,20 @@ $( document ).ready(function() {
     
         // Execute the run function.
         run();
-    
-    // this function dynamically creates the inputs needed for the form and relates them to the
-    // items held within the game object 
+     
     function formTemplate(data) {
     // the first variable relates the form field for question with the data in the object for
     // each question so that the questions can be inputed into that form field
         var qString = "<form id='questionOne'>"+ data.question +"<br>";
-    // this variable to access the question object's possibles array needed to answer each question
+    // this variable to access the question object's answers array needed to answer each question
         var possibles = data.possibles;
-    // a for loop to go through the possibles array for each question to add the values of each possibles
+    // a for loop to go through the answers array for each question to add the values of each answer
     // array and using qString, add them as radio buttons to the question to which they are
     // associated
         for (var i = 0; i < possibles.length; i++) {
             var possible = possibles[i];
             console.log(possible);
-            qString = qString + "<input type='radio' name='"+data.id+"' value="+ i +">"+possible;
+            qString = qString + "<input type='radio' name='"+data.id+"' value=" + i + ">" + possible;
     
         }
         return qString + "</form>";
@@ -154,15 +142,15 @@ $( document ).ready(function() {
         for (var i = 0; i<game.questions.length; i++) {
             questionHTML = questionHTML + formTemplate(game.questions[i]);
         }
-        $('#questions-container').append(questionHTML);
+        $("#questions-container").append(questionHTML);
     
     }
     
     // function that 
     function isCorrect(question){
-        var answers = $('[name='+question.id+']');
+        var answers = $("[name=" + question.id + "]");
         var correct = answers.eq(question.answer);
-        var isChecked = correct.is(':checked');
+        var isChecked = correct.is(":checked");
         return isChecked;
     }
     
@@ -171,8 +159,8 @@ $( document ).ready(function() {
     
     // function to build the display of guesser results
     function resultsTemplate(question){
-        var htmlBlock = '<div>'
-        htmlBlock = htmlBlock + question.question + ': ' + isChecked;
+        var htmlBlock = "<div>"
+        htmlBlock = htmlBlock + question.question + ": " + isChecked;
         return htmlBlock + "</div>";
     }
     
@@ -180,7 +168,7 @@ $( document ).ready(function() {
     function checkAnswers (){
     
     // variables needed to hold results
-        var resultsHTML = '';
+        var resultsHTML = "";
         var guessedAnswers = [];
         var correct = 0;
         var incorrect = 0;
@@ -206,14 +194,14 @@ $( document ).ready(function() {
         }
     // display the results of the function in the results div and use strings of text to relate the
     // results of the for loop with their corresponding values
-        $('.results').html('correct: '+correct+ "<br>" +'incorrect: '+incorrect+ "<br>" +'unanswered: '+unAnswered);
+        $(".results").html("correct: " + correct+ "<br>" + "incorrect: " + incorrect+ "<br>" + "unanswered: " + unAnswered);
     }
     
     // this function checks whether the guesser actually checked an answer for each of the 
     // questions
     function checkAnswered(question){
         var anyAnswered = false;
-        var answers = $('[name='+question.id+']');
+        var answers = $("[name=" + question.id + "]");
     // the for loop creates a condition to check if the buttons were checked and and then sets
     // the anyAnswered variable to true if they were
         for (var i = 0; i < answers.length; i++) {
@@ -229,9 +217,9 @@ $( document ).ready(function() {
     
     // create a function with an onclick event for the doneButton that both checks the Answers 
     // and stops the clock when "done" button is pressed
-        $('#doneButton').on('click', function() {
+        $("#doneButton").on("click", function() {
         checkAnswers();
         stop();
-        $("#messageDiv").html("Game Over!");
+        $("#messageDiv").html("You Finished!!");
         })
     });
