@@ -69,6 +69,8 @@ $( document ).ready(function() {
     
         // test
         var message = "You Finished!!";
+          // Timer 
+          var number = 100;
         // var $message = $('#message');
         // test
     
@@ -76,13 +78,16 @@ $( document ).ready(function() {
         $(".startGame").on("click", function (){
     // when the start button clicked, the div with the questions that was hidden is shown
             $(".wrapper").show();
+            buildQuestions();
+            // Execute the run function.
+            run();
+            $("#timeLeft").html("<h2>" + number + " seconds" + "</h2>");
     
             $(this).hide();
         });
     
         // Timer 
-        var number = 120;
-        $("#timeLeft").on("click", run);
+        $("#timeLeft").on("click", run); //come back to this is a min
     
         // This function enables the number of seconds to decrease with time, and to display
         // the result of that decrease until time is up. 
@@ -112,9 +117,6 @@ $( document ).ready(function() {
         // Clears our "counter" interval. The interval name is passed to the clearInterval function.
             clearInterval(counter);
         }
-    
-        // Execute the run function.
-        run();
      
     function formTemplate(data) {
     // the first variable relates the form field for question with the data in the object for
@@ -148,14 +150,16 @@ $( document ).ready(function() {
     
     // function that 
     function isCorrect(question){
+        //aray og radio buttons
         var answers = $("[name=" + question.id + "]");
+        //string value of radio buttion that has the index of our correct answer
         var correct = answers.eq(question.answer);
+        //if our answer has been clicked by yht user and its the right one return true
         var isChecked = correct.is(":checked");
         return isChecked;
     }
     
     // call the buildQuestions function
-    buildQuestions();
     
     // function to build the display of guesser results
     function resultsTemplate(question){
@@ -172,7 +176,7 @@ $( document ).ready(function() {
         var guessedAnswers = [];
         var correct = 0;
         var incorrect = 0;
-        var unAnswered =0
+        var unAnswered = 0;
     
     // for loop iterates through each question and passes the questions at each index first into
     // the isCorrect function to see if they match the indices of correct answers, and if they do,
