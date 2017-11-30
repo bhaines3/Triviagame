@@ -71,8 +71,6 @@ $( document ).ready(function() {
         var message = "You Finished!!";
           // Timer 
           var number = 100;
-        // var $message = $('#message');
-        // test
     
     // This initializes the button that starts the game 
         $(".startGame").on("click", function (){
@@ -146,11 +144,8 @@ $( document ).ready(function() {
     
     // function that 
     function isCorrect(question){
-        //aray og radio buttons
         var answers = $("[name=" + question.id + "]");
-        //string value of radio buttion that has the index of our correct answer
         var correct = answers.eq(question.answer);
-        //if our answer has been clicked by yht user and its the right one return true
         var isChecked = correct.is(":checked");
         return isChecked;
     }

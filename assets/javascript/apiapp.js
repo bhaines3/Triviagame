@@ -58,8 +58,7 @@ $( document ).ready(function() {
     })
         // test
         var message = "You Finished!!";
-        // var $message = $('#message');
-        // test
+
     
     // This initializes the button that starts the game 
         $(".startGame").on("click", function (){
@@ -86,9 +85,6 @@ $( document ).ready(function() {
             if (number === 0){
             // run the stop function.
             stop();
-            // Alert the user that time is up. Update the innerHTML of the message
-           // div to say 'Game Over!'
-            // alert('Time Up!')
             $("#message").html("times up!");
             checkAnswers();
             }
@@ -104,12 +100,8 @@ $( document ).ready(function() {
             clearInterval(counter);
         }
     
-        // Execute the run function.
-        
-     
     function formTemplate(data) {
-    // the first variable relates the form field for question with the data in the object for
-    // each question so that the questions can be inputed into that form field
+    
         var qString = "<form id='questionOne'>"+ data.question +"<br>";
     // this variable to access the question object's answers array needed to answer each question
         var possibles = data.possibles;
@@ -119,7 +111,7 @@ $( document ).ready(function() {
         for (var i = 0; i < possibles.length; i++) {
             var possible = possibles[i];
             console.log(possible);
-            qString = qString + "<input type='radio' name='"+data.id+"' value=" + i + ">" + possible;
+            qString = qString + "<input type='radio' name='"+ data.id +"' value=" + i + " > " + possible + "  ";
     
         }
         return qString + "</form>";
