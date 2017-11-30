@@ -2,6 +2,11 @@ body {
     background-image: url("http://guyanachronicle.com/wp-content/uploads/2016/01/3ds_grass_texture241_173.jpg")
 }
 
+.card-header {
+    background-color: rgb(129, 45, 59);
+    color: white;
+}
+
 .card-body {
     background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png")
 }
