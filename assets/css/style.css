@@ -2,12 +2,32 @@ body {
     background-image: url("http://guyanachronicle.com/wp-content/uploads/2016/01/3ds_grass_texture241_173.jpg")
 }
 
+.card-body {
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png")
+}
+
 h1 {
-    color: white;
     text-align: center;
 }
 
 .form {
-    margin: 20px;
-    background-color: white;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#questionOne {
+    padding-bottom: 15px;
+}
+
+.timer {
+    text-align: center;
+}
+
+#doneButton {
+    margin: 10px;
+}
+
+.message {
+    color: red;
+    font-weight: bolder;
 }

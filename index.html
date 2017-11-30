@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	    <meta charset="UTF-8">
 	    <link rel="stylesheet" href="assets/css/style.css">
 	    <title>Brandon's Trivial Trivia</title>
     </head>
     <body>
+		<div class="container">
+			
+			<div class="wrapper">
+				<!-- <div class="row"> -->
+					<div class="col-12">
+					<div class="card mt-4">
+						<div class="card-header text-center">
+							<h1 class="card-title">Brandon's Totally Trivial Sports Trivia</h1>
+							<p class="card-subtitle copyright">© Copyright 2017 Brandon Haines</p>
+						</div>
+						<div class="card-body text-center">
+							<div class="timer" id="timeLeft"></div>
+							<div class="form" id="questions-container"></div>
+							<button class="startGame">Start Game!!</button>
+							<button id="doneButton">Done</button>
+							<div class="message" id="messageDiv"></div>
+							<div class="results"></div>
+						</div>
+					</div>
+					</div>
+				<!-- </div>	 -->
+			</div>	
+		</div>
 
 <!-- this button is created to start the game -->
-	    <button class="startGame">Start Game!!</button>
+	    
 <!-- a wrapper div holds all the items that will be displayed after the startGame button is clicked -->
-	    <div class="wrapper">
+	    <!-- <div class="wrapper">
 
 		    <h1 class="header">Totally Trivial Trivia Game - Sports Edition!!</h1>
 <!--  timer -->
-		    <div class="timer" id="timeLeft"></div>
+		    <!-- <div class="timer" id="timeLeft"></div> -->
 <!-- questions -->
-		    <div class="form" id="questions-container"></div>
+		    <!-- <div class="form" id="questions-container"></div>
 
-	    </div>
+	    <!-- </div> -->
 <!-- done button if finished early -->
-	    <button id="doneButton">Done</button>
+		
 <!-- message to be displayed when time is up -->
-	    <div class="message" id="messageDiv"></div>
+	    
 <!-- results message -->
-	    <div class="results"></div>
+	    
 <!-- linking to jquery, bootstrap, and the local js file -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
     </body>
 </html>
