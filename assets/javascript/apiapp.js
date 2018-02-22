@@ -6,7 +6,7 @@ $( document ).ready(function() {
           }
     //added api
     $.ajax({
-        url: "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple",
+        url: "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple",
         method: "GET"
     }).done(function (response) {
       console.log(response.results, " this is the ajax response")
