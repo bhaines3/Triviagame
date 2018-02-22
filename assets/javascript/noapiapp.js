@@ -2,77 +2,90 @@ $( document ).ready(function() {
     
     // game object that holds all questions and answers
         var game = {
-            questions: []
-          }
-    //added api
-    $.ajax({
-        url: "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple",
-        method: "GET"
-    }).done(function (response) {
-      console.log(response.results, " this is the ajax response")
-      //an array of 3 incorrect answers
-      //one key value pair of the correct answer
-      //take the 3 incorrect and correct and stor them into an possibles property on an obj wich will be an array
-      for(var i = 0; i < response.results.length; i++) {
-        //loop over each response object
-        //generate an object to stor our array\
-        var formatArray = []
-        var obj = {};
-        
-        //push that formated object into our array after we format it
-        formatArray.push(response.results[i].correct_answer)
-        for (var j = 0; j < response.results[i].incorrect_answers.length; j++){
-          formatArray.push(response.results[i].incorrect_answers[j])
-        }
-        formatArray = shuffle(formatArray);
-        console.log(formatArray.indexOf(response.results[i].correct_answer), "this is our index of");
-        if (formatArray.indexOf(response.results[i].correct_answer) !== -1) {
-          obj.answer = formatArray.indexOf(response.results[i].correct_answer)
-        }
-        obj.question = response.results[i].question;
-        obj.id = "question-" + i
-        obj.possibles = formatArray;
-        game.questions.push(obj)
-      }
-    // Got this code from Stack Overflow to randomize array answers 
-      function shuffle(array) {
-        var currentIndex = array.length;
-        var temporaryValue; 
-        var randomIndex;
-
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-
-        return array;
-      }
-    })
+            questions: [
+            {
+                question: "What is the regulation height for a basketball hoop?",
+                possibles: ["9 ft", "10 ft", "12 ft", "8 ft"],
+                id: 'question-one',
+                answer: 1
+            }, {
+                question: "What city hosted the 2012 Summer Olympics?",
+                possibles: ["Paris", "Beijing", "Rio", "Tokyo", "London"],
+                id: 'question-two',
+                answer: 4
+            }, {
+                question: "How many soccer players should be on the field at the same time?",
+                possibles: ["22", "20", "11", "16", "18"],
+                id: 'question-three',
+                answer: 0
+            }, {
+                question: "What NFL Quarterback has been in the most Super Bowls?",
+                possibles: ["Joe Montana", "Brett Farve", "Ben Rothlisberger", "Tom Brady", "Troy Aikman"],
+                id: 'question-four',
+                answer: 3
+            }, {
+                question: "The Heisman Trophy is presented in which sport?",
+                possibles: ["College Baseball", "MLB", "College Basketball", "College Football", "NFL"],
+                id: 'question-five',
+                answer: 3
+            }, {
+                question: "What position does Rob Gronkowski play?",
+                possibles: ["Wide Receiver", "Safety", "Tight End", "Offensive Line", "Running Back"],
+                id: 'question-six',
+                answer: 2
+    
+            }, {
+                question: "What is the highest number of games played in a World Series?",
+                possibles: ["3", "9", "5", "7", "4"],
+                id: 'question-seven',
+                answer: 3
+            }, {
+                question: "Lambeau Field is the home field of which National Football League team?",
+                possibles: ["Dolphins", "Packers", "Bears", "Eagles", "Patriots"],
+                id: 'question-eight',
+                answer: 1
+            }, {
+                question: "What is the most common type of pitch thrown by pitchers in baseball?",
+                possibles: ["Fastball", "Curveball", "Slider", "Knuckleball", "Screwball"],
+                id: 'question-nine',
+                answer: 0
+            }, {
+                question: "Which tennis player has won the most men's Grand Slam titles?",
+                possibles: ["Andre Agassi", "Pete Sampras", "Roger Federer", "Rafael Nadal", "Bjorn Borg"],
+                id: 'question-ten',
+                answer: 2
+            }, {
+                question: "Who is the only athlete ever to play in a Super Bowl and a World Series?",
+                possibles: ["Bo Jackson", "Barry Sanders", "DJ Dozier", "Jim Thorpe", "Deion Sanders"],
+                id: 'question-eleven',
+                answer: 4
+            }, {
+                question: "What is the real name of the former wrestler turned actor who went by the ring name 'The Rock'?",
+                possibles: ["Shawn Robinson", "Dwayne Johnson", "Deion Lewis", "Micheal Johnson", "none of the above"],
+                id: 'question-twelve',
+                answer: 1
+            }
+            ]}
+    
         // test
         var message = "You Finished!!";
-
+          // Timer 
+          var number = 100;
     
     // This initializes the button that starts the game 
         $(".startGame").on("click", function (){
     // when the start button clicked, the div with the questions that was hidden is shown
-            $(".wrapper").show();
+            $(".card-body").show();
+            buildQuestions();
+            // Execute the run function.
+            run();
+            $("#timeLeft").html("<h2>" + number + " seconds" + "</h2>");
     
             $(this).hide();
-          run();
-          buildQuestions();
         });
     
         // Timer 
-        var number = 100;
-        $("#timeLeft").on("click", run);
+        $("#timeLeft").on("click", run); //come back to this is a min
     
         // This function enables the number of seconds to decrease with time, and to display
         // the result of that decrease until time is up. 
@@ -99,9 +112,9 @@ $( document ).ready(function() {
         // Clears our "counter" interval. The interval name is passed to the clearInterval function.
             clearInterval(counter);
         }
-    
+     
     function formTemplate(data) {
-    
+
         var qString = "<form id='questionOne'>"+ data.question +"<br>";
     // this variable to access the question object's answers array needed to answer each question
         var possibles = data.possibles;
@@ -154,7 +167,7 @@ $( document ).ready(function() {
         var guessedAnswers = [];
         var correct = 0;
         var incorrect = 0;
-        var unAnswered =0
+        var unAnswered = 0;
     
     // for loop iterates through each question and passes the questions at each index first into
     // the isCorrect function to see if they match the indices of correct answers, and if they do,
